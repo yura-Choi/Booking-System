@@ -1,0 +1,98 @@
+@import url(https://spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css);
+@import url(https://fonts.googleapis.com/css?family=Roboto:300);
+
+.login-page {
+    width: 860px;
+    padding: 8% 0 0;
+    margin: auto;
+}
+
+.form {
+    position: relative;
+    z-index: 1;
+    background: #FFFFFF;
+    max-width: 860px;
+    margin: 0 auto 100px;
+    padding: 45px;
+    text-align: center;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
+.form #submitAdminCode {
+    font-family: "Roboto", sans-serif;
+    text-transform: uppercase;
+    outline: 0;
+    background: #33a6cc;
+    width: 50%;
+    border: 0;
+    padding: 15px;
+    color: #FFFFFF;
+    font-size: 14px;
+  -webkit-transition: all 0.3 ease;
+    transition: all 0.3 ease;
+    cursor: pointer;
+}
+
+.form #submitAdminCode:hover, .form #submitAdminCode:active, .form #submitAdminCode:focus {
+    background: #2e95b8;
+}
+
+#disagree hover, active, focus {
+    background-color: #bfbfbf;
+}
+
+.form .message {
+    margin: 15px 0 0;
+    color: #b3b3b3;
+    font-size: 12px;
+}
+
+.form .message a {
+    color: #33a6cc;
+    text-decoration: none;
+}
+
+.form .jointype {
+    display: none;
+}
+
+.terms-form {
+    width: 90%;
+    position: relative;
+    padding: 10px;
+    overflow-x: hidden;
+    max-height: 180px;
+    border: 2px solid #33a6cc;
+    text-align: left;
+}
+
+.form span {
+    font-size: 10pt;
+    font-family: "Roboto", sans-serif;
+}
+
+.form p {
+    font-size: 15pt;
+    text-align: left;
+    font-family: "Roboto", sans-serif;
+    font-weight: bold;
+}
+
+.form #submitAdminCode {
+    font-family: "Roboto", sans-serif;
+    text-transform: uppercase;
+    outline: 0;
+    background: #33a6cc;
+    width: 20%;
+    border: 0;
+    padding: 15px;
+    color: #FFFFFF;
+    font-size: 14px;
+  -webkit-transition: all 0.3 ease;
+    transition: all 0.3 ease;
+    cursor: pointer;
+}
+
+.form button:hover,.form button:active,.form button:focus {
+    background: #2e95b8;
+}

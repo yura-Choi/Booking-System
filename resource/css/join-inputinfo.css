@@ -1,0 +1,38 @@
+@import url(https://spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css);
+@import url(https://fonts.googleapis.com/css?family=Roboto:300);
+
+.form {
+    position: relative;
+    left: -250px;
+    top: 100px;
+    z-index: 1;
+    background: #FFFFFF;
+    margin: 0 auto 100px;
+    padding: 30px;
+    width: 860px;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
+.form #joinSubmit, .form #checkId {
+    font-family: "Roboto", sans-serif;
+    text-transform: uppercase;
+    outline: 0;
+    background: #33a6cc;
+    width: 50%;
+    border: 0;
+    padding: 15px;
+    color: #FFFFFF;
+    font-size: 14px;
+  -webkit-transition: all 0.3 ease;
+    transition: all 0.3 ease;
+    cursor: pointer;
+}
+
+font {
+    font-size: 10pt;
+}
+
+.form #joinSubmit:hover, .form #joinSubmit:active, .form #joinSubmit:focus, .form #joinSubmit:target, 
+.form #checkId:hover, .form #checkId:active, .form #checkId:focus, .form #checkId:target {
+    background: #2e95b8;
+}

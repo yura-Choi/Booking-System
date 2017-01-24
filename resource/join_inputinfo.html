@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html class="full" lang="en">
+<head>
+	<title>RESORT BUS RESERVATION SYSTEM</title>
+   <meta charset="utf-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <meta name="description" content="">
+   <meta name="author" content="">
+
+   <link href="css/bootstrap.min.css" rel="stylesheet">
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+   <link href="css/the-big-picture.css" rel="stylesheet">
+   <link href="css/join-inputinfo.css" rel="stylesheet">
+   <link href='https://fonts.googleapis.com/css?family=Passion+One' rel='stylesheet' type='text/css'>
+   <link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
+</head>
+<body>
+<!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-bottom" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">Resort Bus Reservation</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="login.html" id="navlogin">Login</a>
+                    </li>
+                    <li>
+                        <a href="join.html">Join</a>
+                    </li>
+                    <li>
+                        <a href="service.html">Service</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Page Content -->
+    <div class="container">
+        <div class="row">
+          <div class="col-sm-offset-3 col-sm-6 col-md-offset-4 col-md-4">
+            <div class="main-login main-center">
+              <div class="form">
+              <form class="form-horizontal" method="post" action="#">
+                <fieldset>
+                  <legend>회원정보입력<font size="7">&nbsp;&nbsp;( *는 필수입력사항입니다.)</font></legend>
+                  <div class="form-group">
+                    <label class="col-md-4 control-label" for="UserId">*아이디</label>  
+                    <div class="col-md-6">
+                      <input id="UserId" name="UserId" type="text" placeholder="8~10자리 영소문자와 숫자" class="form-control input-md">
+                      <input type="button" id="checkId" value="아이디 중복 체크"/>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-md-4 control-label" for="UserName">*이름</label>  
+                    <div class="col-md-6">
+                      <input id="UserName" name="UserName" type="text" class="form-control input-md">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-md-4 control-label" for="Password">*비밀번호</label>
+                    <div class="col-md-6">
+                      <input id="Password" name="Password" type="password" placeholder="8~15자리 영소문자와 숫자" class="form-control input-md">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-md-4 control-label" for="PasswordAgain">*비밀번호 확인</label>
+                    <div class="col-md-6">
+                      <input id="PasswordAgain" name="PasswordAgain" type="password" class="form-control input-md">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-md-4 control-label" for="Email">*이메일 주소</label>  
+                    <div class="col-md-6">
+                      <input id="Email" name="Email" type="text" placeholder="example@email.com" class="form-control input-md">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-md-4 control-label" for="PhoneNumber">*휴대폰 번호</label>  
+                    <div class="col-md-6">
+                      <input id="Phone" name="PhoneNumber" type="text" placeholder="XXX-XXXX-XXXX" class="form-control input-md">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-md-4 control-label" for="Birth">생년월일</label>
+                    <div class="col-md-4">                     
+                      <input id="Birth" name="Birth" type="text" placeholder="YYYY-MM-DD" class="form-control input-md">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-md-4 control-label" for=""></label>
+                    <div class="col-md-4">
+                      <input type="button" id="joinSubmit" value="회원가입 완료" name="button" class="btn btn-success">
+                    </div>
+                  </div>
+                </fieldset>
+              </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- /.container -->
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!--login session script-->
+    <script src="js/sessionlogin.js"></script>
+    <script src="js/join-inputinfo.js"></script>
+</body>
+</html>
