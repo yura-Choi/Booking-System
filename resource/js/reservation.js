@@ -79,12 +79,62 @@ $("#searchBusOne").click(function(){
     if (busStart[0].checked==true){
         $.post("/reservation/search/one", {startDate: $("#datepicker2").dateText},
             function(result, status){
-                $(".btn_red").attr("disable", "false");
+                $(".btn_red").css("disable", "false");
         });
     } else if (busStart[1].checked==true){
         $.post("/reservation/search/one", {startDate: $("#datepicker2").dateText},
             function(result, status){
                 $(".btn_blue").css("");
         });
+    }
+});
+
+$("#continueReservation").click(function(){
+    if (busway[0].checked){
+        $.ajax({
+            type: "POST",
+            url: "/reservation/next/round",
+            data: { type: "round",
+                    startDate: $("#start_resort_date").text(),
+                    startPlace: $("#start_resort_place").text(),
+                    startTime: $("#start_resort_time").text(),
+                    endDate: $("#start_seoul_date").text(),
+                    endPlace: $("#start_seoul_place").text(),
+                    endTime: $("#start_seoul_time").text()},
+            success: function(){
+                location.href="reservation_last.html";
+            }
+        })
+    } else if (busway[1].checked){
+        busToWhere = document.getElementsByName('bus-start');
+        if (busToWhere[0].checked){
+            $.ajax({
+                type: "POST",
+                url: "/reservation/next/one/resort",
+                data: { type:"resort",
+                        startDate: $("#start_resort_date").text(),
+                        startPlace: $("#start_resort_place").text(),
+                        startTime: $("#start_resort_time").text()},
+                success: function(){
+                    location.href="reservation_last.html";
+                }
+            });
+        } else if (busToWhere[1].checked){
+            $.ajax({
+                type: "POST",
+                url: "/reservation/next/one/seoul",
+                data: { type: "seoul",
+                        endDate: $("#start_seoul_date").text(),
+                        endPlace: $("#start_seoul_place").text(),
+                        endTime: $("#start_seoul_time").text() },
+                success: function(){
+                    location.href="reservation_last.html";
+                }
+            });
+        } else {
+            alert("탑승하실 방향을 선택해주세요.");
+        }
+    } else {
+        alert("셔틀버스 타입을 선택해주세요.");
     }
 });

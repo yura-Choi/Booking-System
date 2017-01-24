@@ -37,6 +37,7 @@ $("#modifySubmit").click(function(){
 
 $("#withDrawalSubmit").click(function(){
     $.ajax({
+        type: "POST",
         url: "/mypage/withdrawal",
         data: { password: $("#checkPassword").val() },
         success: withDrawalResult

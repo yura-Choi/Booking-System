@@ -142,7 +142,7 @@ func withDrawalSubmit(w http.ResponseWriter, req *http.Request) {
 	if http.Cookie(isAdminCookie).Value == "admin" {
 		_, err = db.Exec("DELETE FROM AdminInfo WHERE id=?", currentId)
 	} else {
-		_, err = db.Exec("DELETE FROM AdminInfo WHERE id=?", currentId)
+		_, err = db.Exec("DELETE FROM MemberInfo WHERE id=?", currentId)
 	}
 	printErr(err)
 

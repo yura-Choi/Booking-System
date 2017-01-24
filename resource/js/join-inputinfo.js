@@ -8,8 +8,6 @@ $("#joinSubmit").click(function(e){
                                 phone: $("#Phone").val(), 
                                 birth: $("#Birth").val()}, 
                 function(result, status){
-                    alert(result);
-                    alert(status);
                     if (status == "success") {
                         joinNewAccount();
                     } else {
@@ -20,6 +18,8 @@ $("#joinSubmit").click(function(e){
         e.preventDefault();
     }
 });
+
+var isValidId;
 
 $("#checkId").click(function(){
     $.ajax({
@@ -46,14 +46,18 @@ function joinNewAccount(){
         alert("아이디 중복 체크를 해주세요.");
         $("#UserId").focus();
         return;
+    } else if (isValidId==true){
+        alert("회원가입이 완료되었습니다. 로그인 후 이용해주세요");
+        location.href="index.html";
     }
-    alert("회원가입이 완료되었습니다. 로그인 후 이용해주세요");
-    location.href="index.html";
 }
 
 function errorResult(result){
     if (result == "id") {
         alert("아이디는 8~10자의 영소문자와 숫자의 조합입니다.");
+        $("#UserId").focus();
+    } else if (isValidId==false){
+        alert("아이디 중복 체크를 해주세요.");
         $("#UserId").focus();
     } else if (result == "name") {
         alert("이름을 입력하지 않았거나 길이가 20이상입니다.");

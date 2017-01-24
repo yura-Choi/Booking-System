@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html class="full" lang="en">
+<head>
+	<title>RESORT BUS RESERVATION SYSTEM</title>
+   <meta charset="utf-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <meta name="description" content="">
+   <meta name="author" content="">
+
+   <link href="css/bootstrap.min.css" rel="stylesheet">
+   <link href="css/the-big-picture.css" rel="stylesheet">
+   <link href="css/reservation.css" rel="stylesheet">
+   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+</head>
+<body>
+<!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-bottom" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">Resort Bus Reservation</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="login.html" id="navlogin">Login</a>
+                    </li>
+                    <li>
+                        <a href="join.html">Join</a>
+                    </li>
+                    <li>
+                        <a href="service.html">Service</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Page Content -->
+    <div class="login-page">
+      <div class="form">
+        <nav class="navbar navbar-fixed-left navbar-minimal animate" role="navigation">
+          <div class="navbar-toggler animate">
+            <span class="menu-icon"></span>
+          </div>
+          <ul class="navbar-menu animate">
+            <li>
+              <a href="mypage.html" class="animate" id="mypage">
+                <span class="desc animate" name="mypage"> 마이페이지 </span>
+                <span class="glyphicon glyphicon-user"></span>
+              </a>
+            </li>
+            <li>
+              <a href="reservation.html" class="animate" id="reservation">
+                <span class="desc animate" name="reservation"> 셔틀버스 예약 </span>
+                <span class="glyphicon glyphicon-info-sign"></span>
+              </a>
+            </li>
+            <li>
+              <a href="member_reservationList.html" class="animate" id="List">
+                <span class="desc animate" name="reservationList"> 예약된 목록 확인 </span>
+                <span class="glyphicon glyphicon-comment"></span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+
+      <!-- START OF HTML FOR DEMO - NOT NEEDED -->
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-offset-3 col-sm-6 col-md-offset-4 col-md-4">
+            <img src="img/reservationguidance.png" class="busguidance" alt="busguidance">
+          </div>
+        </div>
+        <div class="row">
+          <center>
+          <br><br>
+          <table class="table" style="width: 600px;">
+            <thead class="thead-inverse">
+              <tr bgcolor="#2e95b8">
+                <th colspan="5" style="color: white;">Step 4. 셔틀버스 탑승인원 선택</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td scope="row" style="width: 100px">구분</td>
+                <td style="width: 200px"><span id="busType"></span></td>
+              </tr>
+              <tr id="roundterm">
+                <td scope="row" style="width: 100px">출발일</td>
+                <td style="width: 200px"><span id="roundStart"></td>
+                <td style="width: 100px">도착일</td>
+				<td style="width: 200px"><span id="roundEnd"></span></td>
+              </tr>
+              <tr class="onewayterm">
+              	<td scope="row" style="width: 100px">출발구분</td>
+                <td style="width: 200px" colspan="2"><input type="radio" value="resort" name="bus-start" checked="checked">&nbsp;&nbsp;리조트행&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="radio" value="seoul" name="bus-start">&nbsp;&nbsp;서울행 </td>
+              </tr>
+              <tr class="onewayterm">
+              	<td scope="row" style="width: 100px">출발일</td>
+                <td style="width: 200px"><input type="text" id="datepicker2"></td>
+              </tr>
+            </tbody>
+          </table>
+          </center>
+          <div class="row">
+          <center>
+          <br><br>
+          <a name="last"></a>
+          <table class="table" style="width: 600px;">
+            <thead class="thead-inverse">
+              <tr bgcolor="#2e95b8">
+                <th colspan="4" style="color: white;">Step 3. 버스예약확인</th>
+              </tr>
+            </thead>
+            <tr>
+            	<td>리조트행 출발</td>
+            	<td><span id="start_resort_date"></span></td>
+              <td><span id="start_resort_place"></span></td>
+              <td><span id="start_resort_time"></span></td>
+            </tr>
+            <tr>
+            	<td>서울행 출발</td>
+            	<td><span id="start_seoul_date"></span></td>
+              <td><span id="start_seoul_place"></span></td>
+              <td><span id="start_seoul_time"></span></td>
+            </tr>
+            <tr>
+              <td colspan="4" align="right"><input type="button" value="예약하기 >>" class="search"></td>
+            </tr>
+          </table>
+          </center>
+        </div>
+      </div>
+    </div>
+    <!-- /.container -->
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+    <script src="js/sessionlogin.js"></script>
+    <script src="js/service-form.js"></script>
+    <script src="js/reservation.js"></script>
+</body>
+</html>

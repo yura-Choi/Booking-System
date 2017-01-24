@@ -88,7 +88,7 @@
           <table class="table" style="width: 600px;">
             <thead class="thead-inverse">
               <tr bgcolor="#2e95b8">
-                <th colspan="5" style="color: white;">Step 1. 셔틀버스 노선 조회</th>
+                <th colspan="5" style="color: white;">Step 1. 셔틀버스 탑승날짜 선택</th>
               </tr>
             </thead>
             <tbody>
@@ -102,17 +102,17 @@
                 <td style="width: 200px"><input type="text" id="datepicker1-1"></td>
                 <td style="width: 100px">도착일</td>
                 <td style="width: 200px"><input type="text" id="datepicker1-2"></td>
-                <td align="right"><input type="button" value="조회" class="search" id="searchBusRound"></td>
+                <!--<td align="right"><input type="button" value="조회" class="search" id="searchBusRound"></td>-->
               </tr>
               <tr class="onewayterm">
               	<td scope="row" style="width: 100px">출발구분</td>
-                <td style="width: 200px" colspan="2"><input type="radio" value="resort" name="bus-start" checked="checked">&nbsp;&nbsp;리조트행&nbsp;&nbsp;&nbsp;&nbsp;
+                <td style="width: 200px" colspan="2" align="left"><input type="radio" value="resort" name="bus-start" checked="checked">&nbsp;&nbsp;리조트행&nbsp;&nbsp;&nbsp;&nbsp;
                     <input type="radio" value="seoul" name="bus-start">&nbsp;&nbsp;서울행 </td>
               </tr>
               <tr class="onewayterm">
               	<td scope="row" style="width: 100px">출발일</td>
-                <td style="width: 200px"><input type="text" id="datepicker2"></td>
-                <td align="right"><input type="button" value="조회" class="search" id="searchBusOne"></td>
+                <td style="width: 200px" align="left"><input type="text" id="datepicker2"></td>
+                <!--<td align="right"><input type="button" value="조회" class="search" id="searchBusOne"></td>-->
               </tr>
             </tbody>
           </table>
@@ -123,7 +123,7 @@
           <table class="table" style="width: 600px;">
             <thead class="thead-inverse">
               <tr bgcolor="#2e95b8">
-                <th colspan="4" style="color: white;">Step 2-1. 리조트행 셔틀버스 시간선택</th>
+                <th colspan="4" style="color: white;">Step 2-1. 리조트행 셔틀버스 시간 선택</th>
               </tr>
             </thead>
             <tbody>
@@ -450,7 +450,7 @@
               <td><span id="start_seoul_time"></span></td>
             </tr>
             <tr>
-              <td colspan="4" align="right"><input type="button" value="예약하기 >>" class="search"></td>
+              <td colspan="4" align="right"><input type="button" id="continueReservation" value="다음으로 >>" class="search"></td>
             </tr>
           </table>
           </center>

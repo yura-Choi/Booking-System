@@ -12,7 +12,7 @@ $("#login").click(function(){
                       isAdmin: $("input[name=isAdmin]:checked").val()},
             function(result, status, xhr){
                 if (result == "WrongId"){
-                    alert("아이디가 일치하지 않습니다.");
+                    alert("아이디가 존재하지 않습니다.");
                 } else if(result == "WrongPassword"){
                     alert("비밀번호가 일치하지 않습니다.");
                 } else if(result == "loginRestriction"){

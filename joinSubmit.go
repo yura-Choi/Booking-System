@@ -143,7 +143,7 @@ func checkId(w http.ResponseWriter, req *http.Request){
 	if dbName != "" {
 		w.Write([]byte("alreadyExists"))
 		return
-	} else if inputId == "" {
+	} else if id == "" {
 		w.Write([]byte("empty"))
 		return
 	}
