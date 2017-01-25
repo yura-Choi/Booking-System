@@ -1,58 +1,110 @@
 package main
 
 import (
+	"database/sql"
+	"encoding/json"
 	"log"
 	"net/http"
 )
 
-func searchRoundMember(w http.ResponseWriter, req *http.Request) {
-	startResort := req.PostFormValue("resortDate")
-	startSeoul := req.PostFormValue("seoulDate")
-	log.Println(startResort)
-	log.Println(startSeoul)
+type busReservationData struct {
+	BusType    string
+	Id         string
+	StartDate  string
+	StartPlace string
+	StartTime  string
+	EndDate    string
+	EndPlace   string
+	EndTime    string
+	Member     string
 }
 
-func searchOneMember(w http.ResponseWriter, req *http.Request) {
-	startDate := req.PostFormValue("startDate")
-	log.Println(startDate)
-}
+var infoBus busReservationData
 
-var (
-	startDate string,
-	startPlace string,
-	startTime string,
-	endDate string,
-	endPlace string,
-	endTime string
-)
+func saveReservationData(w http.ResponseWriter, req *http.Request) {
+	infoBus.Id = sessionKeyMap[http.Cookie(sessionCookie).Value]
+	infoBus.BusType = req.FormValue("busType")
 
-func keepDataRound(w http.ResponseWriter, req *http.Request){
-	id := sessionKeyMap[http.Cookie(sessionCookie).Value]
-	type := req.FormValue("type")
-
-	if type == "round" {
-		startDate = req.FormValue("startDate");
-		startPlace = req.FormValue("startPlace");
-		startTime = req.FormValue("startTime");
-		endDate = req.FormValue("endDate");
-		endPlace = req.FormValue("endPlace");
-		endTime = req.FormValue("endTime");
-
-
-	} else if type == "resort" {
-		startDate = req.FormValue("startDate");
-		startPlace = req.FormValue("startPlace");
-		startTime = req.FormValue("startTime");
-
-	} else if type == "seoul" {
-		endDate = req.FormValue("endDate");
-		endPlace = req.FormValue("endPlace");
-		endTime = req.FormValue("endTime");
-
+	if infoBus.BusType == "round" {
+		infoBus.StartDate = req.FormValue("startDate")
+		infoBus.StartPlace = req.FormValue("startPlace")
+		infoBus.StartTime = req.FormValue("startTime")
+		infoBus.EndDate = req.FormValue("endDate")
+		infoBus.EndPlace = req.FormValue("endPlace")
+		infoBus.EndTime = req.FormValue("endTime")
+		w.Write([]byte("success"))
+	} else if infoBus.BusType == "resort" {
+		infoBus.StartDate = req.FormValue("startDate")
+		infoBus.StartPlace = req.FormValue("startPlace")
+		infoBus.StartTime = req.FormValue("startTime")
+		w.Write([]byte("success"))
+	} else if infoBus.BusType == "seoul" {
+		infoBus.EndDate = req.FormValue("endDate")
+		infoBus.EndPlace = req.FormValue("endPlace")
+		infoBus.EndTime = req.FormValue("endTime")
+		w.Write([]byte("success"))
+	} else {
+		w.Write([]byte("error"))
 	}
+
+	log.Println(infoBus)
 }
 
-func keepDataOneResort(w http.ResponseWriter, req *http.Request){
-	id := sessionKeyMap[http.Cookie(sessionCookie).Value]
-	type := "resort"
+func printReservationResult(w http.ResponseWriter, req *http.Request) {
+	jsonData, err := json.Marshal(infoBus)
+	printErr(err)
+
+	log.Println(jsonData)
+	log.Println(string(jsonData))
+
+	w.Header().Set("Content-Type", "application/json; utf-8")
+	w.Write(jsonData)
+}
+
+func submitReservationData(w http.ResponseWriter, req *http.Request) {
+	infoBus.Member = req.FormValue("member")
+
+	//데이터베이스 오픈
+	db, err := sql.Open("mysql", "root:asdf@tcp(127.0.0.1:3306)/bus")
+	printErr(err)
+	defer db.Close()
+
+	if infoBus.BusType == "round" {
+		stmt, err := db.Prepare("INSERT INTO ReservationInfo(id, member, busType, resortDate, seoulDate, resortPlace, seoulPlace, resortTime, seoulTime) VALUES(?,?,?,?,?,?,?,?,?)")
+		printErr(err)
+		defer stmt.Close()
+		_, err = stmt.Exec(infoBus.Id, infoBus.Member, infoBus.BusType, infoBus.StartDate, infoBus.EndDate, infoBus.StartPlace, infoBus.EndPlace, infoBus.StartTime, infoBus.EndTime)
+		if err != nil {
+			w.WriteHeader(400)
+			log.Println(err)
+		} else {
+			w.WriteHeader(200)
+			return
+		}
+	} else if infoBus.BusType == "resort" {
+		stmt, err := db.Prepare("INSERT INTO ReservationInfo(id, member, busType, resortDate, resortPlace, resortTime) VALUES(?,?,?,?,?,?)")
+		printErr(err)
+		defer stmt.Close()
+		_, err = stmt.Exec(infoBus.Id, infoBus.Member, infoBus.BusType, infoBus.StartDate, infoBus.StartPlace, infoBus.StartTime)
+		if err != nil {
+			w.WriteHeader(400)
+			log.Println(err)
+		} else {
+			w.WriteHeader(200)
+			return
+		}
+	} else if infoBus.BusType == "seoul" {
+		stmt, err := db.Prepare("INSERT INTO ReservationInfo(id, member, busType, seoulDate, seoulPlace, seoulTime) VALUES(?,?,?,?,?,?)")
+		printErr(err)
+		defer stmt.Close()
+		_, err = stmt.Exec(infoBus.Id, infoBus.Member, infoBus.BusType, infoBus.EndDate, infoBus.EndPlace, infoBus.EndTime)
+		if err != nil {
+			w.WriteHeader(400)
+			log.Println(err)
+		} else {
+			w.WriteHeader(200)
+			return
+		}
+	}
+
 }

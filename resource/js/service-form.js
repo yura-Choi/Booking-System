@@ -23,7 +23,6 @@ $(function () {
     $.ajax({
         url: "/service/getCurrentStatus", 
         success: function(result){
-            console.log(result);
             if (result == "admin"){
                 $("span[name=reservation]").text("관리자 확인");
             } else if (result == "member"){

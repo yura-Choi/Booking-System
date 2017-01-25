@@ -10,11 +10,11 @@ import (
 	"time"
 	"unicode"
 
-	"crypto/sha256" 
+	"crypto/sha256"
 
 	"io"
 
-	_ "github.com/go-sql-driver/mysql" 
+	_ "github.com/go-sql-driver/mysql"
 )
 
 func checkChar(checkstr string) bool {
@@ -78,9 +78,7 @@ func joinSubmit(w http.ResponseWriter, req *http.Request) {
 		log.Println(isAdmin)
 		if isAdmin == true {
 			stmt, err := db.Prepare("INSERT INTO AdminInfo(name, id, password, email, phone, birth, joindate) VALUES(?,?,?,?,?,?,?)")
-			if err != nil {
-				panic(err)
-			}
+			printErr(err)
 			defer stmt.Close()
 			_, err = stmt.Exec(name, id, shaHex, email, phone, birth, string(currentTime))
 			if err != nil {
@@ -91,13 +89,11 @@ func joinSubmit(w http.ResponseWriter, req *http.Request) {
 			}
 		} else if isAdmin == false {
 			stmt, err := db.Prepare("INSERT INTO MemberInfo(name, id, password, email, phone, birth, joindate) VALUES(?,?,?,?,?,?,?)")
-			if err != nil {
-				panic(err)
-			}
+			printErr(err)
 			_, err = stmt.Exec(name, id, shaHex, email, phone, birth, string(currentTime))
 			if err != nil {
 				w.Write([]byte("dbfail"))
-				log.Println(err)  
+				log.Println(err)
 			} else {
 				w.WriteHeader(200)
 				return
@@ -106,9 +102,9 @@ func joinSubmit(w http.ResponseWriter, req *http.Request) {
 	}
 }
 
-func checkId(w http.ResponseWriter, req *http.Request){
+func checkId(w http.ResponseWriter, req *http.Request) {
 	id := req.FormValue("inputId")
-  
+
 	// DB Open
 	db, err := sql.Open("mysql", "root:asdf@tcp(127.0.0.1:3306)/bus")
 	printErr(err)
@@ -121,7 +117,7 @@ func checkId(w http.ResponseWriter, req *http.Request){
 	rows, err := db.Query(q, id)
 	printErr(err)
 	defer rows.Close()
-	for rows.Next(){ 
+	for rows.Next() {
 		err = rows.Scan(&dbName)
 		printErr(err)
 	}
@@ -135,7 +131,7 @@ func checkId(w http.ResponseWriter, req *http.Request){
 	rows, err = db.Query(q, id)
 	printErr(err)
 	defer rows.Close()
-	for rows.Next(){
+	for rows.Next() {
 		err = rows.Scan(&dbName)
 		printErr(err)
 	}

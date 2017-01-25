@@ -1,9 +1,6 @@
 package main
 
-import (
-	"log"
-	"net/http"
-)
+import "net/http"
 
 func logOutPrint(w http.ResponseWriter, req *http.Request) {
 	w.Write([]byte(http.Cookie(sessionCookie).Value))
@@ -12,7 +9,5 @@ func logOutPrint(w http.ResponseWriter, req *http.Request) {
 
 func getCookie(w http.ResponseWriter, req *http.Request) {
 	exists := sessionKeyMap[http.Cookie(sessionCookie).Value]
-	log.Print("exists=")
-	log.Println(exists)
 	w.Write([]byte(exists))
 }

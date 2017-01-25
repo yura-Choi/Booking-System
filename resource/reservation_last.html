@@ -96,49 +96,32 @@
                 <td scope="row" style="width: 100px">구분</td>
                 <td style="width: 200px"><span id="busType"></span></td>
               </tr>
-              <tr id="roundterm">
-                <td scope="row" style="width: 100px">출발일</td>
-                <td style="width: 200px"><span id="roundStart"></td>
-                <td style="width: 100px">도착일</td>
-				<td style="width: 200px"><span id="roundEnd"></span></td>
+              <tr id="resultResortPlaceTime" colspan="3">
+                <td>리조트행 출발</td>
+            	  <td><span id="start_resort_date"></span></td>
+                <td><span id="start_resort_place"></span></td>
+                <td><span id="start_resort_time"></span></td>
               </tr>
-              <tr class="onewayterm">
-              	<td scope="row" style="width: 100px">출발구분</td>
-                <td style="width: 200px" colspan="2"><input type="radio" value="resort" name="bus-start" checked="checked">&nbsp;&nbsp;리조트행&nbsp;&nbsp;&nbsp;&nbsp;
-                    <input type="radio" value="seoul" name="bus-start">&nbsp;&nbsp;서울행 </td>
+              <tr id="resultSeoulPlaceTime" colspan="3">
+            	  <td>서울행 출발</td>
+            	  <td><span id="start_seoul_date"></span></td>
+                <td><span id="start_seoul_place"></span></td>
+                <td><span id="start_seoul_time"></span></td>
               </tr>
-              <tr class="onewayterm">
-              	<td scope="row" style="width: 100px">출발일</td>
-                <td style="width: 200px"><input type="text" id="datepicker2"></td>
+              <tr colspan="3">
+                <td>탑승인원</td>
+                <td>
+                  <select id="memberSelect">
+                    <option value="">인원을 선택해주세요</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td colspan="4" align="right"><input type="button" id="reservationSubmit" value="예약하기 >>" class="search"></td>
               </tr>
             </tbody>
-          </table>
-          </center>
-          <div class="row">
-          <center>
-          <br><br>
-          <a name="last"></a>
-          <table class="table" style="width: 600px;">
-            <thead class="thead-inverse">
-              <tr bgcolor="#2e95b8">
-                <th colspan="4" style="color: white;">Step 3. 버스예약확인</th>
-              </tr>
-            </thead>
-            <tr>
-            	<td>리조트행 출발</td>
-            	<td><span id="start_resort_date"></span></td>
-              <td><span id="start_resort_place"></span></td>
-              <td><span id="start_resort_time"></span></td>
-            </tr>
-            <tr>
-            	<td>서울행 출발</td>
-            	<td><span id="start_seoul_date"></span></td>
-              <td><span id="start_seoul_place"></span></td>
-              <td><span id="start_seoul_time"></span></td>
-            </tr>
-            <tr>
-              <td colspan="4" align="right"><input type="button" value="예약하기 >>" class="search"></td>
-            </tr>
           </table>
           </center>
         </div>
@@ -158,5 +141,6 @@
     <script src="js/sessionlogin.js"></script>
     <script src="js/service-form.js"></script>
     <script src="js/reservation.js"></script>
+    <script src="js/reservation_last.js"></script>
 </body>
 </html>
