@@ -23,9 +23,10 @@ $(function(){
     );
 });
 
-$("#mypage").click(function(){
-    $.post("/index/getCookie", 
+$(".mypage").click(function(){
+    $.post("/index/getCookie",
         function(result){
+            alert(result);
             if(result == "admin" || result == "member"){
                 location.href="mypage.html";
             } else if (result == ""){

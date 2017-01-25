@@ -32,7 +32,7 @@ $(function () {
     });
 });
 
-$("#mypage").click(function(){
+$(".mypage").click(function(){
     location.href="mypage.html";  //마이페이지 (공용)
 });
 
