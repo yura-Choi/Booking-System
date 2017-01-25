@@ -48,9 +48,6 @@ func modifyInfo(w http.ResponseWriter, req *http.Request) {
 	jsonData, err := json.Marshal(info)
 	printErr(err)
 
-	log.Println(jsonData)
-	log.Println(string(jsonData))
-
 	w.Header().Set("Content-Type", "application/json; utf-8")
 	w.Write(jsonData)
 }

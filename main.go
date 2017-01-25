@@ -7,7 +7,7 @@ import (
 
 func main() {
 	// Simple static webserver:
-	http.Handle("/", http.FileServer(http.Dir("/Users/imac/work/src/reservation/resource"))) // index.html
+	http.Handle("/", http.FileServer(http.Dir("/Users/apple/project/src/reservation/resource"))) // index.html
 	http.HandleFunc("/asdf", func(res http.ResponseWriter, req *http.Request) {
 		res.Write([]byte("asdfasdfasdf"))
 	})
@@ -27,6 +27,8 @@ func main() {
 	http.HandleFunc("/login/sendcode", loginGetCode)      //로그인제한 해제를 위한 인증번호 발급
 	http.HandleFunc("/login/checkcode", loginSetCode)     //로그인제한 해제를 위한 인증번호의 일치여부 검사
 
+	http.HandleFunc("/member/list/reserve", showReserveBusList)  //예약한 셔틀버스 목록 데이터 얻어오기
+	
 	http.HandleFunc("/mypage/getinfo", modifyInfo)          //회원정보수정을 위해 기존 회원정보 불러오기
 	http.HandleFunc("/mypage/modify", modifySubmit)         //회원정보수정 버튼
 	http.HandleFunc("/mypage/withdrawal", withDrawalSubmit) //회원탈퇴

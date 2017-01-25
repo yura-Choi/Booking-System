@@ -82,24 +82,31 @@
         <div class="row">
           <br><br><br>
           <center>
-            <table class="table" style="width: 600px;">
+            <table id="reserveListTable" class="table" style="width: 800px;">
+              <thead class="thead-inverse">
+                <tr bgcolor="#2e95b8">
+                  <th colspan="6"></th>
+                </tr>
+              </thead>
               <tbody>
+                <tr style="height: 15px"></tr>
                 <tr>
-                  <td scope="row" style="width: 100px">
-                    <!--번호-->
+                  <td scope="row" style="width: 100px" rowspan="2">
+                    <span id="busType">1</span>
                   </td>
-                  <td>
-                    <!--왕복여부(왕복, 편도)-->
+                  <td>리조트행</td>
+                  <td style="width: 150px"><span id="startDate">2</span></td>
+                  <td style="width: 150px"><span id="startPlace">2</span></td>
+                  <td style="width: 100px"><span id="startTime">2</span></td>
+                  <td rowspan="2" style="vertical-align: center">
+                    <input type="button" value="예약취소" id="cancelReservation" class="search">
                   </td>
-                  <td>
-                    <!--탑승장소-->
-                  </td>
-                  <td>
-                    <!--탑승시간-->
-                  </td>
-                  <td>
-                    <!--예약취소 버튼-->
-                  </td>
+                </tr>
+                <tr>
+                  <td>서울행</td>
+                  <td style="width: 150px"><span id="endDate">3</span></td>
+                  <td style="width: 150px"><span id="endPlace">3</span></td>
+                  <td style="width: 100px"><span id="endTime">3</span></td>
                 </tr>
               </tbody>
             </table>
@@ -120,7 +127,5 @@
 
     <script src="js/sessionlogin.js"></script>
     <script src="js/service-form.js"></script>
-    <script src="js/reservation.js"></script>
-    <script src="js/datepicker.js"></script>
 </body>
 </html>
