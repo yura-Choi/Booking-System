@@ -82,32 +82,18 @@
         <div class="row">
           <br><br><br>
           <center>
-            <table id="reserveListTable" class="table" style="width: 800px;">
+            <table id="reserveListTable" class="table" style="width: 800px; text-align: center;">
               <thead class="thead-inverse">
+                <tr>
+                  <th colspan="7" style="font-size: 20pt;">예약내역 확인</th>
+                </tr>
                 <tr bgcolor="#2e95b8">
-                  <th colspan="6"></th>
+                  <th colspan="7"></th>
                 </tr>
               </thead>
               <tbody>
                 <tr style="height: 15px"></tr>
-                <tr>
-                  <td scope="row" style="width: 100px" rowspan="2">
-                    <span id="busType">1</span>
-                  </td>
-                  <td>리조트행</td>
-                  <td style="width: 150px"><span id="startDate">2</span></td>
-                  <td style="width: 150px"><span id="startPlace">2</span></td>
-                  <td style="width: 100px"><span id="startTime">2</span></td>
-                  <td rowspan="2" style="vertical-align: center">
-                    <input type="button" value="예약취소" id="cancelReservation" class="search">
-                  </td>
-                </tr>
-                <tr>
-                  <td>서울행</td>
-                  <td style="width: 150px"><span id="endDate">3</span></td>
-                  <td style="width: 150px"><span id="endPlace">3</span></td>
-                  <td style="width: 100px"><span id="endTime">3</span></td>
-                </tr>
+                <!--append <tr><td>.. here-->
               </tbody>
             </table>
           </center>
@@ -126,6 +112,7 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
     <script src="js/sessionlogin.js"></script>
+    <script src="js/member_reservationList.js"></script>
     <script src="js/service-form.js"></script>
 </body>
 </html>
