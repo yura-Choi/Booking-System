@@ -4,7 +4,6 @@ import (
 	"database/sql"
 	"encoding/json"
 	"net/http"
-	"log"
 )
 
 type reserveInfo struct {
@@ -51,15 +50,15 @@ func showReserveBusList(w http.ResponseWriter, req *http.Request) {
 }
 
 func deleteReservation(w http.ResponseWriter, req *http.Request) {
-	var obj requestInfo
+	var obj reserveInfo
 	obj.Member = req.FormValue("member")
 	obj.BusType = req.FormValue("busType")
-	obj.ResortDate = req.FormValue("resortDate")
-	obj.SeoulDate = req.FormValue("seoulDate")
-	obj.ResortPlace = req.FormValue("resortPlace")
-	obj.SeoulPlace = req.FormValue("seoulPlace")
-	obj.ResortTime = req.FormValue("resortTime")
-	obj.SeoulTime = req.FormValue("seoulTime")
+	obj.ResortDate.String = req.FormValue("resortDate")
+	obj.SeoulDate.String = req.FormValue("seoulDate")
+	obj.ResortPlace.String = req.FormValue("resortPlace")
+	obj.SeoulPlace.String = req.FormValue("seoulPlace")
+	obj.ResortTime.String = req.FormValue("resortTime")
+	obj.SeoulTime.String = req.FormValue("seoulTime")
 
 	// 데이터베이스 오픈
 	db, err := sql.Open("mysql", "root:asdf@tcp(127.0.0.1:3306)/bus")

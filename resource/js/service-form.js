@@ -46,11 +46,10 @@ $("#reservation").click(function(){
     })
 });
 
-$("#reservationList").click(function(){
+$("#List").click(function(){
     $.post("/service/getCurrentStatus", function(result){
-        console.log(result);
         if (result == "admin"){
-            $("#List").attr("href", "admin_reservationList.html");    //예약된 목록 확인(관리자용)
+            $("#List").attr("href", "admin_memberList.html");    //예약된 목록 확인(관리자용)
         } else if (result == "member"){
             $("#List").attr("href", "member_reservationList.html");   //예약된 목록 확인(회원용)
         }

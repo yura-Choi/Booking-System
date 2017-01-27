@@ -12,6 +12,9 @@ func main() {
 		res.Write([]byte("asdfasdfasdf"))
 	})
 
+	http.HandleFunc("/admin/list/management", showAdminList)  //관리자 승인 목록 데이터 가져오기
+	http.HandleFunc("/admin/list/do", processAdmitList)  //관리자 승인/거절 처리
+
 	http.HandleFunc("/admincheck/value", adminBtn) //회원가입 시 관리자여부 확인
 
 	http.HandleFunc("/index/logout", logOutPrint)  //로그아웃
