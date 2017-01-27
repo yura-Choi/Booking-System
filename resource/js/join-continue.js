@@ -1,12 +1,15 @@
-$("#generalbtn").bind("click", function(e){
+$("#generalbtn").bind("click", function(){
     $.post("/join/select/type",
-        function(){
-            location.href="join_inputinfo.html";
+        function(result){
+            if (result == "success"){
+                event.preventDefault();
+                window.location="join_inputinfo.html";
+            }
     });
 
 });
 
-$("#administratorbtn").bind("click", function(e){
-    e.preventDefault();
+$("#administratorbtn").bind("click", function(){
+    event.preventDefault();
     window.location="join_administrator.html";
 });

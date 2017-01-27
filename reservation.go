@@ -32,19 +32,16 @@ func saveReservationData(w http.ResponseWriter, req *http.Request) {
 		infoBus.EndDate = req.FormValue("endDate")
 		infoBus.EndPlace = req.FormValue("endPlace")
 		infoBus.EndTime = req.FormValue("endTime")
-		// infoBus.BusType = "왕복"
 		w.Write([]byte("success"))
 	} else if infoBus.BusType == "resort" {
 		infoBus.StartDate = req.FormValue("startDate")
 		infoBus.StartPlace = req.FormValue("startPlace")
 		infoBus.StartTime = req.FormValue("startTime")
-		// infoBus.BusType = "편도(리조트행)"
 		w.Write([]byte("success"))
 	} else if infoBus.BusType == "seoul" {
 		infoBus.EndDate = req.FormValue("endDate")
 		infoBus.EndPlace = req.FormValue("endPlace")
 		infoBus.EndTime = req.FormValue("endTime")
-		// infoBus.BusType = "편도(서울행)"
 		w.Write([]byte("success"))
 	} else {
 		w.Write([]byte("error"))
@@ -82,7 +79,7 @@ func submitReservationData(w http.ResponseWriter, req *http.Request) {
 			return
 		}
 	} else if infoBus.BusType == "resort" {
-		stmt, err := db.Prepare("INSERT INTO ReservationInfo(id, member, busType, resortDate,, resortPlace, resortTime) VALUES(?,?,?,?,?,?)")
+		stmt, err := db.Prepare("INSERT INTO ReservationInfo(id, member, busType, resortDate, resortPlace, resortTime) VALUES(?,?,?,?,?,?)")
 		printErr(err)
 		defer stmt.Close()
 		_, err = stmt.Exec(infoBus.Id, infoBus.Member, "편도(리조트행)", infoBus.StartDate, infoBus.StartPlace, infoBus.StartTime)

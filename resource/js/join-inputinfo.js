@@ -20,6 +20,9 @@ $("#joinSubmit").click(function(e){
 });
 
 var isValidId;
+$(function(){
+    isValidId=false;
+});
 
 $("#checkId").click(function(){
     $.ajax({
@@ -38,8 +41,8 @@ $("#checkId").click(function(){
                 isValidId = true;
             }
         }
-    })
-})
+    });
+});
 
 function joinNewAccount(){
     if (isValidId==false){
@@ -82,7 +85,7 @@ function errorResult(result){
         $("#Birth").focus();
     } else if (result == "dbfail") {
         alert("일시적인 오류가 발생하였습니다. 다시 시도해주세요.");
-    }
+    } 
 }
 
 function checkChar(checkstr) {
@@ -145,6 +148,9 @@ function checkInputValue(){
     } else if (birth != "" && !birthValidate.test(birth)) {
         alert("입력하신 생년월일의 형식이 올바르지 않습니다.");
         $("#Birth").focus();
+        return true;
+    } else if (isValidId==false){
+        alert("아이디 중복체크를 해주세요");
         return true;
     }
     return false;

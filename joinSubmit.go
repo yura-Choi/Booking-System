@@ -146,3 +146,8 @@ func checkId(w http.ResponseWriter, req *http.Request) {
 
 	w.Write([]byte("success"))
 }
+
+func joinToMember(w http.ResponseWriter, req *http.Request){
+	isAdmin = false
+	w.Write([]byte("success"))
+}

@@ -9,6 +9,16 @@ $("input[name=bus-way]:radio").change(function(){
       	$("#roundterm").css("display", "none");
     }
 });
+$("input[name=bus-start]:radio").change(function(){
+    busStart = document.getElementsByName('bus-start');
+    if(busStart[0].checked==true){
+        $("#resortResult").css("display", "");
+        $("#seoulResult").css("display", "none");
+    } else if (busStart[1].checked==true){
+        $("#resortResult").css("display", "none");
+        $("#seoulResult").css("display", "");
+    }
+});
 
 $("#datepicker2").datepicker({
     dateFormat: 'yy-mm-dd',
@@ -16,14 +26,8 @@ $("#datepicker2").datepicker({
         busStart = document.getElementsByName('bus-start');
         if (busStart[0].checked==true){
             $("#start_resort_date").text(dateText);
-            $("#start_seoul_date").text("");
-            $("#start_seoul_place").text("");
-            $("#start_seoul_time").text("");
         } else if (busStart[1].checked==true){
             $("#start_seoul_date").text(dateText);
-            $("#start_resort_date").text("");
-            $("#start_resort_place").text("");
-            $("#start_resort_time").text("");
         }
     }
 })

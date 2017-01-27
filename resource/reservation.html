@@ -437,21 +437,24 @@
                 <th colspan="4" style="color: white;">Step 3. 버스예약확인</th>
               </tr>
             </thead>
-            <tr>
-            	<td>리조트행 출발</td>
-            	<td><span id="start_resort_date"></span></td>
-              <td><span id="start_resort_place"></span></td>
-              <td><span id="start_resort_time"></span></td>
-            </tr>
-            <tr>
-            	<td>서울행 출발</td>
-            	<td><span id="start_seoul_date"></span></td>
-              <td><span id="start_seoul_place"></span></td>
-              <td><span id="start_seoul_time"></span></td>
-            </tr>
-            <tr>
-              <td colspan="4" align="right"><input type="button" id="continueReservation" value="다음으로 >>" class="search"></td>
-            </tr>
+            <tbody>
+              <tr id="resortResult">
+            	  <td>리조트행 출발</td>
+            	  <td><span id="start_resort_date"></span></td>
+                <td><span id="start_resort_place"></span></td>
+                <td><span id="start_resort_time"></span></td>
+              </tr>
+              <tr id="seoulResult">
+            	  <td>서울행 출발</td>
+            	  <td><span id="start_seoul_date"></span></td>
+                <td><span id="start_seoul_place"></span></td>
+                <td><span id="start_seoul_time"></span></td>
+              </tr>
+              <tr>
+                <td colspan="4" align="right"><input type="button" id="continueReservation" value="다음으로 >>" class="search"></td>
+              </tr>
+            </tbody>
+            
           </table>
           </center>
         </div>

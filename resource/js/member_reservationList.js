@@ -1,6 +1,9 @@
+var obj;
 $(function(){
 	$.post("/member/list/reserve",
 		function(result){
+			obj = result;
+			console.log(result.length);
 			if (result.length == 0) {
 				$("#reserveListTable").find('tbody')
 									  .append($('<tr></tr>'))
@@ -12,7 +15,7 @@ $(function(){
 			}
 
 			for(i=0;i<result.length;i++){
-				if (result[i].BusType=="round"){
+				if (result[i].BusType=="왕복"){
 					var row = $("<tr>");
 					row.append($("<td>").attr('rowspan', '2').text("왕복"));
 					row.append($("<td>").attr('rowspan', '2').text(result[i].Member+"명"));
@@ -20,7 +23,7 @@ $(function(){
 					row.append($("<td>").text(result[i].ResortDate.String));
 					row.append($("<td>").text(result[i].ResortPlace.String));
 					row.append($("<td>").text(result[i].ResortTime.String));
-					row.append($("<td>").attr('rowspan', '2')).append($("<input>").attr({type: "button", value: "예약취소", id: "cancelReservation"+i, class: "search"}));
+					row.append($("<td>").attr('rowspan', '2')).append($("<input>").attr({type: "button", value: "예약취소", id: "cancelReservation", name: i, class: "search", onClick: 'deleteRow('+i+')'}));
 
 					var row2 = $("<tr>");
 					row2.append($("<td>").text("서울행"));
@@ -29,7 +32,7 @@ $(function(){
 					row2.append($("<td>").text(result[i].SeoulTime.String));
 
 					$("#reserveListTable").append(row).append(row2);
-				} else if (result[i].BusType=="resort"){
+				} else if (result[i].BusType=="편도(리조트행)"){
 					var row = $("<tr>");
 					row.append($("<td>").text("편도 - 리조트행"));
 					row.append($("<td>").text(result[i].Member+"명"));
@@ -37,10 +40,10 @@ $(function(){
 					row.append($("<td>").text(result[i].ResortDate.String));
 					row.append($("<td>").text(result[i].ResortPlace.String));
 					row.append($("<td>").text(result[i].ResortTime.String));
-					row.append($("<td>").append($("<input>").attr({type: "button", value: "예약취소", id: "cancelReservation"+i, class: "search"})));
+					row.append($("<td>").append($("<input/>").attr({type: "button", value: "예약취소", id: "cancelReservation", name: i, class: "search", onClick: 'deleteRow('+i+')'})));
 
 					$("#reserveListTable").append(row);
-				} else if (result[i].BusType=="seoul"){
+				} else if (result[i].BusType=="편도(서울행)"){
 					var row = $("<tr>");
 					row.append($("<td>").text("편도 - 서울행"));
 					row.append($("<td>").text(result[i].Member+"명"));
@@ -48,7 +51,7 @@ $(function(){
 					row.append($("<td>").text(result[i].SeoulDate.String));
 					row.append($("<td>").text(result[i].SeoulPlace.String));
 					row.append($("<td>").text(result[i].SeoulTime.String));
-					row.append($("<td>").append($("<input>").attr({type: "button", value: "예약취소", id: "cancelReservation"+i, class: "search"})));
+					row.append($("<td>").append($("<input/>").attr({type: "button", value: "예약취소", id: "cancelReservation", name: i, class: "search", onClick: 'deleteRow('+i+')'})));
 
 					$("#reserveListTable").append(row);
 				}
@@ -56,3 +59,29 @@ $(function(){
 		}
 	);
 });
+
+function deleteRow(index){
+
+	alert(obj[index]);
+	console.log(obj[index]);
+	$.ajax({
+		type: 'POST',
+		url: '/member/list/delete',
+		data: { member: obj[index].Member,
+			    busType: obj[index].BusType,
+			    resortDate: obj[index].ResortDate.String,
+				seoulDate: obj[index].SeoulDate.String,
+				resortPlace: obj[index].ResortPlace.String,
+				seoulPlace: obj[index].SeoulPlace.String,
+				resortTime: obj[index].ResortTime.String,
+				seoulTime: obj[index].SeoulTime.String },
+		success: function(){
+			alert("삭제가 완료되었습니다.");
+			window.location.reload();
+		},
+		error: function(){
+			alert("일시적인 오류가 발생했습니다. 다시 시도해주세요");
+			window.location.reload();
+		}
+	});
+}

@@ -4,10 +4,11 @@ import (
 	"database/sql"
 	"encoding/json"
 	"net/http"
+	"log"
 )
 
 type reserveInfo struct {
-	Member      int8
+	Member      string
 	BusType     string
 	ResortDate  sql.NullString
 	ResortPlace sql.NullString
@@ -50,9 +51,29 @@ func showReserveBusList(w http.ResponseWriter, req *http.Request) {
 }
 
 func deleteReservation(w http.ResponseWriter, req *http.Request) {
+	var obj requestInfo
+	obj.Member = req.FormValue("member")
+	obj.BusType = req.FormValue("busType")
+	obj.ResortDate = req.FormValue("resortDate")
+	obj.SeoulDate = req.FormValue("seoulDate")
+	obj.ResortPlace = req.FormValue("resortPlace")
+	obj.SeoulPlace = req.FormValue("seoulPlace")
+	obj.ResortTime = req.FormValue("resortTime")
+	obj.SeoulTime = req.FormValue("seoulTime")
 
 	// 데이터베이스 오픈
 	db, err := sql.Open("mysql", "root:asdf@tcp(127.0.0.1:3306)/bus")
 	printErr(err)
 	defer db.Close()
+
+	if obj.BusType == "왕복" {
+		_, err = db.Exec("DELETE FROM ReservationInfo WHERE id=? AND member=? AND busType=? AND resortDate=? AND seoulDate=? AND resortPlace=? AND seoulPlace=? AND resortTime=? AND seoulTime=?", sessionKeyMap[http.Cookie(sessionCookie).Value], obj.Member, obj.BusType, obj.ResortDate, obj.SeoulDate, obj.ResortPlace, obj.SeoulPlace, obj.ResortTime, obj.SeoulTime)
+	} else if obj.BusType == "편도(리조트행)" {
+		_, err = db.Exec("DELETE FROM ReservationInfo WHERE id=? AND member=? AND busType=? AND resortDate=? AND resortPlace=? AND resortTime=?", sessionKeyMap[http.Cookie(sessionCookie).Value], obj.Member, obj.BusType, obj.ResortDate, obj.ResortPlace, obj.ResortTime)
+	} else if obj.BusType == "편도(서울행)" {
+		_, err = db.Exec("DELETE FROM ReservationInfo WHERE id=? AND member=? AND busType=? AND seoulDate=? AND seoulPlace=? AND seoulTime=?", sessionKeyMap[http.Cookie(sessionCookie).Value], obj.Member, obj.BusType, obj.SeoulDate, obj.SeoulPlace, obj.SeoulTime)
+	}
+	printErr(err)
+
+	w.Write([]byte("success"))
 }

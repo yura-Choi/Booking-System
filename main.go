@@ -7,7 +7,7 @@ import (
 
 func main() {
 	// Simple static webserver:
-	http.Handle("/", http.FileServer(http.Dir("/Users/imac/work/src/reservation/resource"))) // index.html
+	http.Handle("/", http.FileServer(http.Dir("/Users/apple/project/src/reservation/resource"))) // index.html
 	http.HandleFunc("/asdf", func(res http.ResponseWriter, req *http.Request) {
 		res.Write([]byte("asdfasdfasdf"))
 	})
@@ -19,6 +19,7 @@ func main() {
 
 	http.HandleFunc("/join/submit", joinSubmit) //회원가입 정보 validate 및 DB 저장
 	http.HandleFunc("/join/checkid", checkId)   //아이디 중복체크
+	http.HandleFunc("/join/select/type", joinToMember)  //회원가입 시 회원유형선택
 
 	http.HandleFunc("/login", login)                      //로그인
 	http.HandleFunc("/login/findid", findID)              //아이디찾기
@@ -28,6 +29,7 @@ func main() {
 	http.HandleFunc("/login/checkcode", loginSetCode)     //로그인제한 해제를 위한 인증번호의 일치여부 검사
 
 	http.HandleFunc("/member/list/reserve", showReserveBusList) //예약한 셔틀버스 목록 데이터 얻어오기
+	http.HandleFunc("/member/list/delete", deleteReservation)  //셔틀버스 예약 취소 버튼
 
 	http.HandleFunc("/mypage/getinfo", modifyInfo)          //회원정보수정을 위해 기존 회원정보 불러오기
 	http.HandleFunc("/mypage/modify", modifySubmit)         //회원정보수정 버튼
