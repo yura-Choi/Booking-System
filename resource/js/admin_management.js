@@ -3,7 +3,6 @@ $(function(){
 	$.post("/admin/list/management",
 		function(result){
 			obj = result;
-			console.log(result.length);
 			if (result.length == 0) {
 				$("#adminListTable").find('tbody')
 									  .append($('<tr></tr>'))
@@ -26,27 +25,21 @@ $(function(){
 
 			for(i=0;i<result.length;i++){
 				var row = $("<tr>");
-				row.append($("<td>").attr('rowspan', '2').text(result[i].JoinDate));
-				row.append($("<td>").attr('rowspan', '2').text(result[i].Id));
-				row.append($("<td>").attr('rowspan', '2').text(result[i].Name));
-				row.append($("<td>").attr('rowspan', '2').text(result[i].Email));
-				row.append($("<td>").attr('rowspan', '2').text(result[i].Phone));
-				row.append($("<td>").attr('rowspan', '2').text(result[i].Birth));
-				row.append($("<td>").append($("<input>").attr({type: "button", value: "승인", id: "admit", name: i, class: "search", onClick: 'adminResult('+i+', admit)'})));
+				row.append($("<td>").attr('rowspan', '2').css("vertical-align", "middle").text(result[i].JoinDate));
+				row.append($("<td>").attr('rowspan', '2').css("vertical-align", "middle").text(result[i].Id));
+				row.append($("<td>").attr('rowspan', '2').css("vertical-align", "middle").text(result[i].Name));
+				row.append($("<td>").attr('rowspan', '2').css("vertical-align", "middle").text(result[i].Email));
+				row.append($("<td>").attr('rowspan', '2').css("vertical-align", "middle").text(result[i].Phone));
+				row.append($("<td>").attr('rowspan', '2').css("vertical-align", "middle").text(result[i].Birth));
+				row.append($("<td>").append($("<input>").css("height", "25px").css("margin-bottom", "5px").attr({type: "button", value: "승인", id: "admit", name: i, class: "search", onClick: 'adminResult('+i+', "admit")'})).append($("<br>")).append($("<input>").css("height", "25px").attr({type: "button", value: "거절", id: "refuse", name: i, class: "search", onClick: 'adminResult('+i+', "refuse")'})));
 
-				var row2 = $("<tr>");
-				row2.append($("<td>").append($("<input>").attr({type: "button", value: "거절", id: "refuse", name: i, class: "search", onClick: 'adminResult('+i+', refuse)'})));
-				$("#adminListTable").append(row).append(row2);
+				$("#adminListTable").append(row);
 			}
 		}
 	);
 });
 
 function adminResult(index, doing){
-	alert(obj[index]);
-	console.log(obj[index]);
-	console.log(doing);
-
 	if (doing == "admit"){
 		$.ajax({
 			type: 'POST',

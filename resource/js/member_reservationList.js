@@ -14,16 +14,26 @@ $(function(){
 				return;
 			}
 
+			$("#reserveListTable").find('thead').append($("<tr>")
+											  .append($("<td>").text("구분"))
+											  .append($("<td>").text("탑승인원"))
+											  .append($("<td>").text("방향"))
+											  .append($("<td>").text("탑승일자"))
+											  .append($("<td>").text("탑승장소"))
+											  .append($("<td>").text("탑승시간"))
+											  .append($("<td>"))
+			);
+
 			for(i=0;i<result.length;i++){
 				if (result[i].BusType=="왕복"){
 					var row = $("<tr>");
-					row.append($("<td>").attr('rowspan', '2').text("왕복"));
-					row.append($("<td>").attr('rowspan', '2').text(result[i].Member+"명"));
+					row.append($("<td>").attr('rowspan', '2').css("vertical-align", "middle").text("왕복"));
+					row.append($("<td>").attr('rowspan', '2').css("vertical-align", "middle").text(result[i].Member+"명"));
 					row.append($("<td>").text("리조트행"));
 					row.append($("<td>").text(result[i].ResortDate.String));
 					row.append($("<td>").text(result[i].ResortPlace.String));
 					row.append($("<td>").text(result[i].ResortTime.String));
-					row.append($("<td>").attr('rowspan', '2')).append($("<input>").attr({type: "button", value: "예약취소", id: "cancelReservation", name: i, class: "search", onClick: 'deleteRow('+i+')'}));
+					row.append($("<td>").attr('rowspan', '2').css("vertical-align", "middle").append($("<input>").attr({type: "button", value: "예약취소", id: "cancelReservation", name: i, class: "search", onClick: 'deleteRow('+i+')'})));
 
 					var row2 = $("<tr>");
 					row2.append($("<td>").text("서울행"));
@@ -61,8 +71,6 @@ $(function(){
 });
 
 function deleteRow(index){
-
-	alert(obj[index]);
 	console.log(obj[index]);
 	$.ajax({
 		type: 'POST',
@@ -76,7 +84,7 @@ function deleteRow(index){
 				resortTime: obj[index].ResortTime.String,
 				seoulTime: obj[index].SeoulTime.String },
 		success: function(){
-			alert("삭제가 완료되었습니다.");
+			alert("예약이 취소되었습니다.");
 			window.location.reload();
 		},
 		error: function(){
