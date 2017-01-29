@@ -30,7 +30,7 @@ $("#datepicker2").datepicker({
             $("#start_seoul_date").text(dateText);
         }
     }
-})
+});
 
 $(".btn_red").click(function(){
     $("#start_resort_place").text($(this).attr("value"));

@@ -33,9 +33,7 @@ func showAdminList(w http.ResponseWriter, req *http.Request){
 	defer rows.Close()
 	for i := 0; rows.Next(); i++ {
 		err = rows.Scan(&infoArr[i].Name, &infoArr[i].Id, &infoArr[i].Email, &infoArr[i].Phone, &infoArr[i].Birth, &infoArr[i].JoinDate)
-		if err != nil {
-			panic(err)
-		}
+		printErr(err)
 	}
 
 	jsonData, err := json.Marshal(infoArr)

@@ -1,7 +1,3 @@
-$( function() {
-    $( "#datepicker1-1, #datepicker1-2, #datepicker2" ).datepicker();
-} );
-
 $("#datepicker1-1").datepicker({
     dateFormat: 'yy-mm-dd',
     onSelect: function(dateText, inst){
@@ -15,7 +11,7 @@ $(function(){
     $("#datepicker1-1, #datepicker1-2, #datepicker2").datepicker("option", "showAnim", "slideDown");
     var d = new Date();
     var strDate = d.getFullYear()+"-"+(d.getMonth()+1)+"-"+(d.getDate()+1);
-    $("#datepicker1-1, #datepicker2").datepicker("option", "minDate", strDate);
+    $("#datepicker1-1, #datepicker1-2, #datepicker2").datepicker("option", "minDate", strDate);
 });
 
 $("#datepicker1-2").datepicker({
