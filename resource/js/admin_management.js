@@ -25,13 +25,13 @@ $(function(){
 
 			for(i=0;i<result.length;i++){
 				var row = $("<tr>");
-				row.append($("<td>").attr('rowspan', '2').css("vertical-align", "middle").text(result[i].JoinDate));
-				row.append($("<td>").attr('rowspan', '2').css("vertical-align", "middle").text(result[i].Id));
-				row.append($("<td>").attr('rowspan', '2').css("vertical-align", "middle").text(result[i].Name));
-				row.append($("<td>").attr('rowspan', '2').css("vertical-align", "middle").text(result[i].Email));
-				row.append($("<td>").attr('rowspan', '2').css("vertical-align", "middle").text(result[i].Phone));
-				row.append($("<td>").attr('rowspan', '2').css("vertical-align", "middle").text(result[i].Birth));
-				row.append($("<td>").append($("<input>").css("height", "25px").css("margin-bottom", "5px").attr({type: "button", value: "승인", id: "admit", name: i, class: "search", onClick: 'adminResult('+i+', "admit")'})).append($("<br>")).append($("<input>").css("height", "25px").attr({type: "button", value: "거절", id: "refuse", name: i, class: "search", onClick: 'adminResult('+i+', "refuse")'})));
+				row.append($("<td>").css("vertical-align", "middle").text(result[i].JoinDate));
+				row.append($("<td>").css("vertical-align", "middle").text(result[i].Id));
+				row.append($("<td>").css("vertical-align", "middle").text(result[i].Name));
+				row.append($("<td>").css("vertical-align", "middle").text(result[i].Email));
+				row.append($("<td>").css("vertical-align", "middle").text(result[i].Phone));
+				row.append($("<td>").css("vertical-align", "middle").text(result[i].Birth));
+				row.append($("<td>").css("vertical-align", "middle").append($("<input/>").css("height", "25px").css("margin-bottom", "5px").attr({type: "button", value: "승인", id: "admit", name: i, class: "search", onClick: 'adminResult('+i+', "admit")'})).append($("<br>")).append($("<input/>").css("height", "25px").attr({type: "button", value: "거절", id: "refuse", name: i, class: "search", onClick: 'adminResult('+i+', "refuse")'})));
 
 				$("#adminListTable").append(row);
 			}

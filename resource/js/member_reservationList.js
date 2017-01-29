@@ -3,13 +3,12 @@ $(function(){
 	$.post("/member/list/reserve",
 		function(result){
 			obj = result;
-			console.log(result.length);
 			if (result.length == 0) {
 				$("#reserveListTable").find('tbody')
 									  .append($('<tr></tr>'))
 									  	.append($('<td></td>'))
 									  		.attr('colspan', '7')
-											.css('font-size', '15pt')
+											.css('font-size', '13pt')
 											.text('예약된 내역이 없습니다.');
 				return;
 			}
@@ -71,7 +70,6 @@ $(function(){
 });
 
 function deleteRow(index){
-	console.log(obj[index]);
 	$.ajax({
 		type: 'POST',
 		url: '/member/list/delete',

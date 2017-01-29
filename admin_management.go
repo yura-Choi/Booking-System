@@ -4,6 +4,7 @@ import (
 	"net/http"
 	"database/sql"
 	"encoding/json"
+	"gopkg.in/gomail.v2"
 )
 
 type adminInfo struct {
@@ -46,16 +47,40 @@ func showAdminList(w http.ResponseWriter, req *http.Request){
 func processAdmitList(w http.ResponseWriter, req *http.Request){
 	typeDo := req.FormValue("typeDo")
 	reqId := req.FormValue("id")
+	var email, name string
 
 	// 데이터베이스 오픈
 	db, err := sql.Open("mysql", "root:asdf@tcp(127.0.0.1:3306)/bus")
 	printErr(err)
 	defer db.Close()
 
+	q := "SELECT email, name FROM AdminInfo WHERE id=?"
+	rows, err := db.Query(q, reqId)
+	printErr(err)
+	defer rows.Close()
+	for rows.Next() {
+		err = rows.Scan(&email, &name)
+		printErr(err)
+	}
+
+	m := gomail.NewMessage()
+	m.SetAddressHeader("From", "dbfk1207@gmail.com", "Bus Reservation")
+	m.SetAddressHeader("To", email, name)
+	m.SetHeader("subject", "[셔틀버스예약시스템]안내메일입니다.")
+
 	if typeDo == "admit" {
 		_, err = db.Exec("UPDATE AdminInfo SET checkAdmin=? WHERE id=?", "A", reqId)
+		m.SetBody("text/plain", name+" 관리자님의 신청이 승인되었습니다. 이제 관리자메뉴를 이용하실 수 있습니다.")
 	} else if typeDo == "refuse" {
 		_, err = db.Exec("UPDATE AdminInfo SET checkAdmin=? WHERE id=?", "R", reqId)
+		m.SetBody("text/plain", name+" 관리자님의 신청이 거절되었습니다. 정상적인 처리를 원하신다면 관리자 연락처로 문의해주세요(문의: 02-000-0000)")
+	}
+	d := gomail.NewPlainDialer("smtp.gmail.com", 587, "dbfk1207@gmail.com", "01092874006")
+
+	if err := d.DialAndSend(m); err != nil {
+		w.WriteHeader(400)
+		printErr(err)
+		return
 	}
 	printErr(err)
 }

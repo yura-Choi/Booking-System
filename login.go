@@ -230,7 +230,6 @@ func findID(w http.ResponseWriter, req *http.Request) {
 		err = rows.Scan(&dbID)
 		printErr(err)
 	}
-	log.Println(dbID)
 	if dbID == "" {
 		w.WriteHeader(400)
 		return

@@ -59,11 +59,11 @@ $(".search").click(function(){
 			obj = result;
 			if (result.length == 0) {
 				$("#memberListTable").find('tbody')
-									  .append($('<tr></tr>'))
-									  	.append($('<td></td>'))
+									  .append($('<tr></tr>')
+									  	.append($('<td></td>')
 									  		.attr('colspan', '5')
-											.css('font-size', '15pt')
-											.text('해당 날짜에 예약한 회원이 없습니다.');
+											.css('font-size', '13pt')
+									  		.text('해당 날짜에 예약한 회원이 없습니다.')));
 				return;
 			}
 
