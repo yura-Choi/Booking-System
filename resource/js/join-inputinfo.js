@@ -30,11 +30,16 @@ $("#checkId").click(function(){
         url: "/join/checkid",
         data: {inputId:$("#UserId").val()},
         success: function(result){
+            var id = $("#UserId").val();
             if (result == "alreadyExists"){
                 alert("이미 존재하는 아이디입니다.");
                 isValidId = false;
             } else if (result == "empty"){
                 alert("아이디를 입력해주세요");
+                isValidId = false;
+            } else if (id == "" || id.length<8 || id.length>10 || checkChar(id)){
+                alert("아이디는 8~10자의 영소문자와 숫자의 조합입니다.");
+                $("#UserId").focus();
                 isValidId = false;
             } else if (result == "success"){
                 alert("사용가능한 아이디입니다.");

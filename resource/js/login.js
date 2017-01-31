@@ -63,8 +63,8 @@ function findUserId(result){
     //회원 아이디 화면에 보여주기
     var showIdHint;
     var length=result.length;
-    showIdHint=result.slice(0, 4);
-    for(var i=4;i<length;i++){
+    showIdHint=result.slice(0, 3);
+    for(var i=3;i<length;i++){
         showIdHint+="*";
     }
     alert("아이디: " + showIdHint);

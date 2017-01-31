@@ -23,11 +23,10 @@ $(function(){
     );
 });
 
-$(".mypage").click(function(){
+$("#mypage").click(function(){
     $.post("/index/getCookie",
         function(result){
-            alert(result);
-            if(result == "admin" || result == "member"){
+            if(result != ""){
                 location.href="mypage.html";
             } else if (result == ""){
                 alert("로그인 후 이용가능합니다.");
@@ -53,7 +52,6 @@ $("#reservationBus").click(function(){
 $("#showReservationInfo").click(function(){
     $.post("/index/getCookie", 
         function(result){
-            console.log(result);
             if(result != ""){
                 location.href="member_reservationList.html";
             } else if (result == ""){

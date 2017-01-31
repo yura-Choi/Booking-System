@@ -209,7 +209,7 @@ html, body { height: 100% }
     font-weight: bold;
 }
 
-.mypage {
+#mypage {
     background: url("../img/mypage_btn.png") no-repeat;
     height: 170px;
     width: 200px;

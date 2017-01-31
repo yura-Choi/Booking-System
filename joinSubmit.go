@@ -74,9 +74,12 @@ func joinSubmit(w http.ResponseWriter, req *http.Request) {
 		shaHex := hex.EncodeToString(shaPassword.Sum(nil))
 		fmt.Println(shaHex)
 		currentTime := time.Now().Format("2006-01-02")
-		log.Println(currentTime)
-		log.Println(isAdmin)
+
 		if isAdmin == true {
+			var countColumn int
+			err = db.QueryRow("SELECT COUNT(*) FROM AdminInfo").Scan(&countColumn)
+			printErr(err)
+
 			stmt, err := db.Prepare("INSERT INTO AdminInfo(name, id, password, email, phone, birth, joindate) VALUES(?,?,?,?,?,?,?)")
 			printErr(err)
 			defer stmt.Close()
@@ -85,7 +88,11 @@ func joinSubmit(w http.ResponseWriter, req *http.Request) {
 				w.Write([]byte("dbfail"))
 			} else {
 				w.WriteHeader(200)
-				return
+
+				if countColumn == 0 {
+					_, err = db.Exec("UPDATE AdminInfo SET checkAdmin=? WHERE id=?", "A", id)
+					printErr(err)
+				}
 			}
 		} else if isAdmin == false {
 			stmt, err := db.Prepare("INSERT INTO MemberInfo(name, id, password, email, phone, birth, joindate) VALUES(?,?,?,?,?,?,?)")
@@ -96,7 +103,6 @@ func joinSubmit(w http.ResponseWriter, req *http.Request) {
 				log.Println(err)
 			} else {
 				w.WriteHeader(200)
-				return
 			}
 		}
 	}

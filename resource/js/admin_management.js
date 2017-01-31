@@ -19,7 +19,7 @@ $(function(){
 											  .append($("<td>").text("이름"))
 											  .append($("<td>").text("이메일"))
 											  .append($("<td>").text("휴대폰번호"))
-											  .append($("<td>").text("생일"))
+											  .append($("<td>").text("생년월일"))
 											  .append($("<td>"))
 			);
 
