@@ -241,7 +241,7 @@ html, body { height: 100% }
     margin: 20px;
 }
 
-.mypage:hover, .mypage:active, .mypage:focus, 
+#mypage:hover, #mypage:active, #mypage:focus, 
 #reservationBus:hover, #reservationBus:active, #reservationBus:focus, 
 #showReservationInfo:hover, #showReservationInfo:active, #showReservationInfo:focus, 
 #showBusInfo:hover, #showBusInfo:active, #showBusInfo:focus, 
