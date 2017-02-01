@@ -25,25 +25,13 @@ $(function () {
         success: function(result){
             if (result == "admin"){
                 $("span[name=reservation]").text("관리자 확인");
+                $("#reservation").attr("href","admin_management.html");  //관리자 확인(관리자용)
             } else if (result == "member"){
                 $("span[name=reservation]").text("셔틀버스 예약");
+                $("#reservation").attr("href","reservation.html");       //셔틀버스 예약(회원용)
             }
         }
     });
-});
-
-$(".mypage").click(function(){
-    location.href="mypage.html";  //마이페이지 (공용)
-});
-
-$("#reservation").click(function(){
-    $.post("/service/getCurrentStatus", function(result){
-        if (result == "admin"){
-            $("#reservation").attr("href","admin_management.html");  //관리자 확인(관리자용)
-        } else if (result == "member"){
-            $("#reservation").attr("href","reservation.html");       //셔틀버스 예약(회원용)
-        }
-    })
 });
 
 $("#List").click(function(){

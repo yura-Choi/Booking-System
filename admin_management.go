@@ -5,6 +5,9 @@ import (
 	"database/sql"
 	"encoding/json"
 	"gopkg.in/gomail.v2"
+	"crypto/sha256"
+	"io"
+	"encoding/hex"
 )
 
 type adminInfo struct {
@@ -86,7 +89,7 @@ func processAdmitList(w http.ResponseWriter, req *http.Request){
 }
 
 func checkPasswordAdmin(w http.ResponseWriter, req *http.Request){
-	inputPassword := req.FormValue()
+	inputPassword := req.FormValue("password")
 	currentId := sessionKeyMap[http.Cookie(sessionCookie).Value]
 	var password string
 
@@ -106,7 +109,7 @@ func checkPasswordAdmin(w http.ResponseWriter, req *http.Request){
 
 	shaPassword := sha256.New()
 	io.WriteString(shaPassword, inputPassword)
-	shaHex := hex.EncodingToString(shaPassword.Sum(nil))
+	shaHex := hex.EncodeToString(shaPassword.Sum(nil))
 
 	if shaHex == password {
 		w.Write([]byte("correct"))

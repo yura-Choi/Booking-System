@@ -77,7 +77,7 @@ function adminResult(index, doing){
 
 
 $("#checkPassword").click(function(){
-    $.post("/admin/list/checkpassword", {password: $("#inputPassword").val()},
+    $.post("/admin/list/checkpassword", { password: $("#inputPassword").val() },
         function(result){
             if (result == "correct"){
 				$("#form").css("max-width", "1260px");

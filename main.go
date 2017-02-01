@@ -7,12 +7,12 @@ import (
 
 func main() {
 	// Simple static webserver:
-	http.Handle("/", http.FileServer(http.Dir("/Users/imac/work/src/reservation/resource"))) // index.html
+	http.Handle("/", http.FileServer(http.Dir("/Users/apple/project/src/reservation/resource"))) // index.html
 	http.HandleFunc("/asdf", func(res http.ResponseWriter, req *http.Request) {
 		res.Write([]byte("asdfasdfasdf"))
 	})
 
-	http.HandleFunc("/admin/list/checkpasword", checkPasswordAdmin)  //관리자 승인 목록 페이지 보이기 전 비밀번호 확인
+	http.HandleFunc("/admin/list/checkpassword", checkPasswordAdmin)  //관리자 승인 목록 페이지 보이기 전 비밀번호 확인
 	http.HandleFunc("/admin/list/management", showAdminList)  //관리자 승인 목록 데이터 가져오기
 	http.HandleFunc("/admin/list/do", processAdmitList)  //관리자 승인/거절 처리
 	http.HandleFunc("/admin/list/reservemember", showReservedMemberList)  //예약한 회원 목록 보여주기
