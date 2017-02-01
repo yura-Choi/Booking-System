@@ -84,3 +84,33 @@ func processAdmitList(w http.ResponseWriter, req *http.Request){
 	}
 	printErr(err)
 }
+
+func checkPasswordAdmin(w http.ResponseWriter, req *http.Request){
+	inputPassword := req.FormValue()
+	currentId := sessionKeyMap[http.Cookie(sessionCookie).Value]
+	var password string
+
+	//데이터베이스 오픈
+	db, err := sql.Open("mysql", "root:asdf@tcp(127.0.0.1:3306)/bus")
+	printErr(err)
+	defer db.Close()
+
+	q := "SELECT password FROM AdminInfo WHERE id=?"
+	rows, err := db.Query(q, currentId)
+	printErr(err)
+	defer rows.Close()
+	for rows.Next(){
+		err = rows.Scan(&password)
+		printErr(err)
+	}
+
+	shaPassword := sha256.New()
+	io.WriteString(shaPassword, inputPassword)
+	shaHex := hex.EncodingToString(shaPassword.Sum(nil))
+
+	if shaHex == password {
+		w.Write([]byte("correct"))
+	} else {
+		w.Write([]byte("incorrect"))
+	}
+}

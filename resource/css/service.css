@@ -209,7 +209,7 @@ html, body { height: 100% }
     font-weight: bold;
 }
 
-#mypage {
+#mypage1, #mypage2 {
     background: url("../img/mypage_btn.png") no-repeat;
     height: 170px;
     width: 200px;
@@ -241,7 +241,8 @@ html, body { height: 100% }
     margin: 20px;
 }
 
-#mypage:hover, #mypage:active, #mypage:focus, 
+#mypage1:hover, #mypage1:active, #mypage1:focus,
+#mypage2:hover, #mypage2:active, #mypage2:focus, 
 #reservationBus:hover, #reservationBus:active, #reservationBus:focus, 
 #showReservationInfo:hover, #showReservationInfo:active, #showReservationInfo:focus, 
 #showBusInfo:hover, #showBusInfo:active, #showBusInfo:focus, 

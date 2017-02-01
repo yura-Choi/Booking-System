@@ -18,5 +18,5 @@ $("#navlogin, #loginbtn").click(function(){
         function(){
             location.href="index.html";
         }
-    );                    
+    );
 });

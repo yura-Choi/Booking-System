@@ -10,12 +10,12 @@ $(function(){
                         $("#admin").css("display", "inline");
                         $("#member").css("display", "none");
                         $("#navlogin").text("Logout")
-                                      .attr("href", "");
+                                      .attr("href", "index.html");
                     } else if (result=="member"){
                         $("#admin").css("display", "none");
                         $("#member").css("display", "inline");
                         $("#navlogin").text("Logout")
-                                      .attr("href", "");
+                                      .attr("href", "index.html");
                     }
                 }
             );
@@ -23,7 +23,7 @@ $(function(){
     );
 });
 
-$("#mypage").click(function(){
+$("#mypage1, #mypage2").click(function(){
     $.post("/index/getCookie",
         function(result){
             if(result != ""){

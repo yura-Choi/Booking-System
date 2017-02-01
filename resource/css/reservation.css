@@ -19,6 +19,26 @@
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
 
+.form #checkPassword {
+    font-family: "Roboto", sans-serif;
+    text-transform: uppercase;
+    outline: 0;
+    background: #33a6cc;
+    height: 50px;
+    width: 160px;
+    border: 0;
+    padding: 15px;
+    color: #FFFFFF;
+    font-size: 14px;
+  -webkit-transition: all 0.3 ease;
+    transition: all 0.3 ease;
+    cursor: pointer;
+}
+
+.form #checkPassword:hover, .form #checkPassword:active, .form #checkPassword:focus {
+    background: #2e95b8;
+}
+
 html, body { height: 100% }
 
 .white-background {

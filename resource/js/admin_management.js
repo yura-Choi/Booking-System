@@ -1,5 +1,9 @@
 var obj;
 $(function(){
+	$("#form").css("max-width", "800px");
+	$("#adminListTable").css("display", "none");
+	$("#beforeShowList").css("display", "");
+
 	$.post("/admin/list/management",
 		function(result){
 			obj = result;
@@ -70,3 +74,17 @@ function adminResult(index, doing){
 		});
 	}
 }
+
+
+$("#checkPassword").click(function(){
+    $.post("/admin/list/checkpassword", {password: $("#inputPassword").val()},
+        function(result){
+            if (result == "correct"){
+				$("#form").css("max-width", "1260px");
+				$("#adminListTable").css("display", "");
+				$("#beforeShowList").css("display", "none");
+            } else if (result == "incorrect"){
+                alert("비밀번호가 일치하지 않습니다.");
+            }
+    });
+});
