@@ -2,6 +2,8 @@ package main
 
 import (
 	"net/http"
+	"database/sql"
+	"encoding/json"
 )
 
 type joinMemberInfo struct {
@@ -10,7 +12,7 @@ type joinMemberInfo struct {
 	Id string
 	Email string
 	Phone string
-	Brith string
+	Birth string
 }
 
 func joinedMemberList(w http.ResponseWriter, req *http.Request){
@@ -22,14 +24,13 @@ func joinedMemberList(w http.ResponseWriter, req *http.Request){
 	var countColumn int
 	err = db.QueryRow("SELECT COUNT(*) FROM MemberInfo").Scan(&countColumn)
 	printErr(err)
-	defer rows.Close()
 	infoArr := make([]joinMemberInfo, countColumn)
 
 	q := "SELECT name, id, email, phone, birth, joindate FROM MemberInfo"
 	rows, err := db.Query(q)
 	printErr(err)
 	defer rows.Close()
-	for i := 0; rows.Next(); i++){
+	for i := 0; rows.Next(); i++{
 		err = rows.Scan(&infoArr[i].Name, &infoArr[i].Id, &infoArr[i].Email, &infoArr[i].Phone, &infoArr[i].Birth, &infoArr[i].JoinDate)
 		printErr(err)
 	}
