@@ -1,0 +1,3 @@
+$(function(){
+	$("#joinedMemberListTable").find('thead')
+});

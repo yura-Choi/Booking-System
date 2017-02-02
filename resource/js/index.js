@@ -15,3 +15,14 @@ $("#joinbtn").text("Join")
 $("#explanation").html("<center>본 사이트는 회원제로 운영되고 있습니다.<br>로그인을 하셔야 이용가능합니다.</center>")
 				 .css("color", "white")
 				 .appendTo("body");
+
+$("#loginbtn").click(function(){
+	if ($("#loginbtn").text()=="Logout"){
+		$.post("/index/logout",
+			function(){
+				location.reload();
+		});
+	} else if ($("#loginbtn").text()=="Login"){
+		location.href="login.html";
+	}
+});

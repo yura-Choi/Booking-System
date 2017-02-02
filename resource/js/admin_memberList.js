@@ -15,9 +15,6 @@ $("input[name=bus-way]:radio").change(function(){
 
 $(function(){
 	$("#datepicker").datepicker("option", "showAnim", "slideDown");
-	var d = new Date();
-	var strDate = d.getFullYear()+"-"+(d.getMonth()+1)+"-"+d.getDate();
-	$("#datepicker").datepicker("option", "minDate", strDate);
 
 	$("#memberListTable").find('thead').append($("<tr>")
 										.append($("<td>").css("width", "200px").css("text-align", "center").text("탑승시간"))
