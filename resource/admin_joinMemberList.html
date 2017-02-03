@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html class="full" lang="en">
 <head>
 	<title>RESORT BUS RESERVATION SYSTEM</title>
@@ -85,70 +84,13 @@
         <div class="row">
           <br><br><br>
           <center>
-          <table id="memberListTable" class="table" style="width: 800px; text-align: center;">
+            <table id="joinedMemberTable" class="table" style="width: 800px; text-align: center;">
               <thead class="thead-inverse">
                 <tr>
-                  <th colspan="2" style="font-size: 20pt; width: 600px;">예약한 회원 목록</th>
-                  <td style="vertical-align: middle; text-align: right;">
-                    <input type="radio" name="bus-way" value="resort">&nbsp;&nbsp;리조트행<br>
-                    <input type="radio" name="bus-way" value="seoul">&nbsp;&nbsp;서울행
-                  </td>
-                  <th style="text-align: right;">
-                    <input type="text" id="datepicker" size="12" style="height: 20px; margin-bottom: 5px;">
-                    <select id="default" name="default" style="height: 15px;"><option value="">버스를 선택해주세요</option></select>
-                    <select id="resortSelect" name="resort" style="height: 15px; display: none;">
-                      <option value="">버스를 선택해주세요</option>
-                      <option value="가산디지털">가산디지털</option>
-                      <option value="강남">강남</option>
-                      <option value="건대입구">건대입구</option>
-                      <option value="광화문">광화문</option>
-                      <option value="교대">교대</option>
-                      <option value="노원">노원</option>
-                      <option value="대화">대화</option>
-                      <option value="목동">목동</option>
-                      <option value="반포">반포</option>
-                      <option value="백석">백석</option>
-                      <option value="부평">부평</option>
-                      <option value="불광">불광</option>
-                      <option value="사당">사당</option>
-                      <option value="서강대역">서강대역</option>
-                      <option value="송내">송내</option>
-                      <option value="안양">안양</option>
-                      <option value="연신내">연신내</option>
-                      <option value="의정부">의정부</option>
-                      <option value="철산">철산</option>
-                      <option value="하안">하안</option>
-                    </select>
-                    <select id="seoulSelect" name="seoul" style="height: 15px; display: none;">
-                      <option value="">버스를 선택해주세요</option>
-                      <option value="가산디지털">가산디지털</option>
-                      <option value="건대입구">건대입구</option>
-                      <option value="광화문">광화문</option>
-                      <option value="구리">구리</option>
-                      <option value="구파발">구파발</option>
-                      <option value="금촌">금촌</option>
-                      <option value="노원">노원</option>
-                      <option value="마두">마두</option>
-                      <option value="목동">목동</option>
-                      <option value="백석">백석</option>
-                      <option value="범계">범계</option>
-                      <option value="불광">불광</option>
-                      <option value="사당">사당</option>
-                      <option value="서강대역">서강대역</option>
-                      <option value="송내">송내</option>
-                      <option value="안양">안양</option>
-                      <option value="연신내">연신내</option>
-                      <option value="의정부">의정부</option>
-                      <option value="철산">철산</option>
-                      <option value="하안">하안</option>
-                    </select>
-                  </th>
-                  <th style="vertical-align: middle; text-align: right;">
-                    <input type="button" class="search" value="조회" style="height: 45px;">
-                  </th>
+                  <th colspan="6" style="font-size: 20pt;">가입된 회원 확인</th>
                 </tr>
                 <tr bgcolor="#2e95b8">
-                  <th colspan="5"></th>
+                  <th colspan="6"></th>
                 </tr>
               </thead>
               <tbody>
@@ -170,7 +112,7 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
     <script src="js/sessionlogin.js"></script>
+    <script src="js/admin_joinMemberList.js"></script>
     <script src="js/service-form.js"></script>
-    <script src="js/admin_memberList.js"></script>
 </body>
 </html>

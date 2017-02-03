@@ -83,3 +83,15 @@ $("#showBusInfo").click(function(){
             }
     });
 });
+
+$("#showMemberInfo").click(function(){
+    $.post("/service/getCurrentAdminAdmit",
+        function(result){
+            if (result != "A"){
+                alert("관리자의 승인을 받아야 이용할 수 있습니다.");
+            } else if (result == "A"){
+                location.href="admin_joinMemberList.html";
+            }
+        }
+    );
+});

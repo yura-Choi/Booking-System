@@ -7,7 +7,7 @@ import (
 
 func main() {
 	// Simple static webserver:
-	http.Handle("/", http.FileServer(http.Dir("/Users/apple/project/src/reservation/resource"))) // index.html
+	http.Handle("/", http.FileServer(http.Dir("/Users/imac/work/src/reservation/resource"))) // index.html
 	http.HandleFunc("/asdf", func(res http.ResponseWriter, req *http.Request) {
 		res.Write([]byte("asdfasdfasdf"))
 	})

@@ -26,6 +26,18 @@ $(function () {
             if (result == "admin"){
                 $("span[name=reservation]").text("관리자 확인");
                 $("#reservation").attr("href","admin_management.html");  //관리자 확인(관리자용)
+
+
+            // <li>
+            //   <a href="admin_joinMemberList.html" class="animate" id="joinedMember">
+            //     <span class="desc animate" name="reservationList"> 가입회원 확인 </span>
+            //     <span class="glyphicon glyphicon-comment"></span>
+            //   </a>
+            // </li>
+
+            var row = $("<tr>");
+            row.append($("<td>").attr())
+
             } else if (result == "member"){
                 $("span[name=reservation]").text("셔틀버스 예약");
                 $("#reservation").attr("href","reservation.html");       //셔틀버스 예약(회원용)

@@ -241,11 +241,20 @@ html, body { height: 100% }
     margin: 20px;
 }
 
+#showMemberInfo {
+    background: url("../img/showMemberList_btn.png") no-repeat;
+    height: 170px;
+    width: 200px;
+    border: 2px solid #33a6cc;
+    margin: 20px;
+}
+
 #mypage1:hover, #mypage1:active, #mypage1:focus,
 #mypage2:hover, #mypage2:active, #mypage2:focus, 
 #reservationBus:hover, #reservationBus:active, #reservationBus:focus, 
 #showReservationInfo:hover, #showReservationInfo:active, #showReservationInfo:focus, 
 #showBusInfo:hover, #showBusInfo:active, #showBusInfo:focus, 
+#showMemberInfo:hover, #showMemberInfo:active, #showMemberInfo:focus,
 #managementCheck:hover, #managementCheck:active, #managementCheck:focus {
     border: 5px solid #2e95b8;
 }
@@ -253,6 +262,7 @@ html, body { height: 100% }
 #admin {
     display: none;
 }
+
 #member {
     display: inline;
 }
